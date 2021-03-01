@@ -30,7 +30,6 @@ cd "$HOME_VPNCONFIG"
 mkdir -p /dev/net
 mknod /dev/net/tun c 10 200
 stat /dev/net/tun
-touch /dev/net/test
 
 echo "creating tap0"
 ip tuntap add dev tap0 mode tap
