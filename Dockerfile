@@ -2,7 +2,9 @@ FROM fedora
 
 RUN dnf upgrade -y
 
-RUN dnf install -y openvpn bridge-utils
+RUN dnf install -y openvpn
+RUN dnf install -y bridge-utils
+RUN dnf install -y bind
 
 #RUN ln -s /dev/null /etc/udev/rules.d/80-net-name-slot.rules
 
