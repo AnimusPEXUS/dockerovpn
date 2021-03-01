@@ -27,9 +27,5 @@ fi
 
 cd "$HOME_VPNCONFIG"
 
-mkdir -p /dev/net
-mknod /dev/net/tun c 10 200
-stat /dev/net/tun
-
 echo "running $HOME_VPNCONFIG/start.sh"
 bash "$HOME_VPNCONFIG/start.sh"
