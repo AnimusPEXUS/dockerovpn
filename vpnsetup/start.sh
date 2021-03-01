@@ -45,8 +45,8 @@ brctl addif ovpnbr eth0
 echo "adding tap0 to pridge"
 brctl addif ovpnbr tap0
 
-echo "removing address from eth0"
-ip addr flush dev eth0
+#echo "removing address from eth0"
+#ip addr flush dev eth0
 
 #echo "getting address for bridge (using dhcp)"
 #dhclient ovpnbr
