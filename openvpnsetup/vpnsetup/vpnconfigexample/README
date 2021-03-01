@@ -1,0 +1,74 @@
+
+== Certificate Authority ==
+
+0. do
+
+mkdir ./CA
+touch ./CA/index.txt
+# echo 'unique_subject = no' > ./CA/index.txt.attr # read manpage for openssl-ca
+
+
+# TODO:  echo 1 > ./CA/serial - this doesn't work
+
+
+
+1. generate dh2048.pem with:
+
+    openssl dhparam -out dh2048.pem 2048
+
+
+2. generate CA key with:
+
+    openssl genrsa -des3 -out CA/ca.key 2048
+
+
+3. generate CA cert with:
+
+    openssl req -x509 -new -nodes -key CA/ca.key -sha256 -days 1825 -out CA/ca.crt
+
+
+(2a, 3a). or both
+
+    openssl req -nodes -new -x509 -keyout CA/ca.key -out CA/ca.crt
+
+
+== Server Key and Certificate ==
+
+4. peer certificate generation (valid for both, server and client side)
+here the server side example
+
+4.0 generate server key
+
+    openssl genrsa -des3 -out server.key 2048
+
+
+4.1 generate certificate request
+
+    openssl req -nodes -new -key server.key -out server.csr
+
+
+or both generate key and request at once
+
+    openssl req -nodes -new -keyout server.key -out server.csr
+
+
+4.2 generate certificate using ca certificate
+
+    openssl ca -config ./openssl.cfg -keyfile CA/ca.key -cert CA/ca.crt -out server.crt -in server.csr
+
+
+== User Key and Certificate ==
+
+5. generate user key and certificate request
+
+openssl genrsa -des3 -out user.key 2048
+openssl req -nodes -new -key user.key -out user.csr
+
+or
+
+openssl req -nodes -new -keyout user.key -out user.csr
+
+
+6. generating user certificate by given request
+
+openssl ca -config ./openssl.cfg -keyfile CA/ca.key -cert CA/ca.crt -out user.crt -in user.csr

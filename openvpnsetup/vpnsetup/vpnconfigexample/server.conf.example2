@@ -1,0 +1,25 @@
+port 1194
+proto tcp
+dev tap0
+
+ca CA/ca.crt
+
+key server.key
+cert server.crt
+
+dh dh2048.pem
+
+topology subnet
+
+server-bridge
+
+client-to-client
+
+keepalive 10 120
+
+cipher AES-256-CBC
+
+persist-key  
+persist-tun  
+
+;explicit-exit-notify 1 
