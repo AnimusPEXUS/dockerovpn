@@ -4,7 +4,8 @@ services:
 
   vpn:
     build:
-      context: ./openvpnsetup
+      context: .
+    #build: "github.com/AnimusPEXUS/dockerovpn.git"
     cap_add:
       - NET_ADMIN
     restart: always
