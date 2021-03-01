@@ -33,21 +33,21 @@ stat /dev/net/tun
 
 #echo "creating tap0"
 #ip tuntap add dev tap0 mode tap
-echo "creating tun0"
-ip tuntap add dev tun0 mode tun
-echo "tap list:"
-ip tuntap list
+#echo "creating tun0"
+#ip tuntap add dev tun0 mode tun
+#echo "tap list:"
+#ip tuntap list
 
-echo "creating bridge"
-brctl addbr ovpnbr
+#echo "creating bridge"
+#brctl addbr ovpnbr
 
-echo "adding eth0 to bridge"
-brctl addif ovpnbr eth0
+#echo "adding eth0 to bridge"
+#brctl addif ovpnbr eth0
 
 #echo "adding tap0 to pridge"
 #brctl addif ovpnbr tap0
-echo "adding tun0 to pridge"
-brctl addif ovpnbr tun0
+#echo "adding tun0 to pridge"
+#brctl addif ovpnbr tun0
 
 #echo "removing address from eth0"
 #ip addr flush dev eth0
