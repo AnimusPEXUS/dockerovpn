@@ -3,8 +3,9 @@ FROM fedora
 RUN dnf upgrade -y
 
 RUN dnf install -y openvpn
+# TODO: migrate to modern packages
 RUN dnf install -y bridge-utils
-RUN dnf install -y bind
+RUN dnf install -y dhcp-client
 
 #RUN ln -s /dev/null /etc/udev/rules.d/80-net-name-slot.rules
 
