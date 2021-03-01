@@ -6,6 +6,7 @@ RUN dnf install -y openvpn
 # TODO: migrate to modern packages
 RUN dnf install -y bridge-utils
 RUN dnf install -y dhcp-client
+RUN dnf install -y net-tools
 
 #RUN ln -s /dev/null /etc/udev/rules.d/80-net-name-slot.rules
 
