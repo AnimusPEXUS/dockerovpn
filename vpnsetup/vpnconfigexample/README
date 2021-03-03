@@ -44,17 +44,17 @@ here the server side example
 
 4.1 generate certificate request
 
-    openssl req -nodes -new -key server.key -out server.csr
+    openssl req -addext "keyUsage = critical,nonRepudiation,digitalSignature,keyEncipherment" -addext "extendedKeyUsage = critical, serverAuth"  -nodes -new -key server.key -out server.csr
 
 
 or both generate key and request at once
 
-    openssl req -nodes -new -keyout server.key -out server.csr
+    openssl req -addext "keyUsage = critical,nonRepudiation,digitalSignature,keyEncipherment" -addext "extendedKeyUsage = critical, serverAuth"  -nodes -new -keyout server.key -out server.csr
 
 
 4.2 generate certificate using ca certificate
 
-    openssl ca -config ./openssl.cfg -keyfile CA/ca.key -cert CA/ca.crt -out server.crt -in server.csr
+    openssl ca -config ./openssl.cfg -startdate 20200101010101Z -enddate 20230101011001Z -keyfile CA/ca.key -cert CA/ca.crt -out server.crt -in server.csr
 
 
 == User Key and Certificate ==
@@ -71,4 +71,4 @@ openssl req -nodes -new -keyout user.key -out user.csr
 
 6. generating user certificate by given request
 
-openssl ca -config ./openssl.cfg -keyfile CA/ca.key -cert CA/ca.crt -out user.crt -in user.csr
+openssl ca -config ./openssl.cfg -startdate 20200101010101Z -enddate 20230101011001Z -keyfile CA/ca.key -cert CA/ca.crt -out user.crt -in user.csr

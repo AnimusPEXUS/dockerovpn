@@ -8,6 +8,7 @@ RUN dnf install -y bridge-utils
 RUN dnf install -y dhcp-client
 RUN dnf install -y net-tools
 RUN dnf install -y iptables
+RUN dnf install -y dhcpcd
 
 #RUN ln -s /dev/null /etc/udev/rules.d/80-net-name-slot.rules
 
