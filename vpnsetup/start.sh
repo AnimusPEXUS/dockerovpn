@@ -8,7 +8,7 @@ HOME_WORKDIR=/root/vpnsetup
 HOME_VPNCONFIG=$HOME_WORKDIR/vpnconfig
 HOME_VPNCONFIGEXAMPLE=$HOME_WORKDIR/vpnconfigexample
 
-for i in README start.sh.example server.conf.example server.conf.example2 openssl.cfg.example client.conf.example
+for i in README start.sh.example server.conf.example server.conf.example2 openssl.cfg.example client.conf.example lookup.go
 do
 
 if [ ! -e "$HOME_VPNCONFIG/$i" ]
